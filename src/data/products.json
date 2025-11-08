@@ -1,0 +1,14 @@
+[
+  { "id": 1, "title": "iPhone 13", "price": 999 },
+  { "id": 2, "title": "Samsung Galaxy S21", "price": 799 },
+  { "id": 3, "title": "Google Pixel 6", "price": 599 },
+  { "id": 4, "title": "OnePlus 9", "price": 729 },
+  { "id": 5, "title": "Xiaomi Mi 11", "price": 699 },
+  { "id": 6, "title": "Nokia Classic Phone", "price": 49 },
+  { "id": 7, "title": "Sony Xperia 5", "price": 849 },
+  { "id": 8, "title": "Huawei P40", "price": 649 },
+  { "id": 9, "title": "Motorola G Power", "price": 199 },
+  { "id": 10, "title": "iPhone 12", "price": 799 },
+  { "id": 11, "title": "Budget Phone A", "price": 99 },
+  { "id": 12, "title": "Budget Phone B", "price": 129 }
+]
