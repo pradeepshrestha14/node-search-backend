@@ -4,6 +4,6 @@ const PORT = Number(process.env.PORT) || 4000;
 const HOST = process.env.HOST || "localhost";
 
 app.listen(PORT, () => {
-  const url = `http://${HOST}:${PORT}`;
+  const url = process.env.NODE_ENV === "production" ? `${HOST}` : `http://${HOST}:${PORT}`;
   console.log(`✅ Server running at: ${url} (env=${process.env.NODE_ENV || "development"})`);
 });
