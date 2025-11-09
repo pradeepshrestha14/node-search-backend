@@ -76,7 +76,7 @@ A scalable Node.js backend for search functionality with caching, validation, an
 - Run tests and generate coverage:
   ```bash
   npm run test:coverage
-  npm run coverage:open
+  then, npm run coverage:open
   ```
   The second command opens a browser with the detailed coverage report.
 
@@ -109,3 +109,4 @@ Logs will show the server URL. Access the same endpoints above on the configured
 - Swagger at `/api/docs` provides an interactive testing UI.
 - Pagination defaults to `page=1` and `limit=10` when not provided.
 - Caching TTL is controlled by `CACHE_TTL_SECONDS` to balance freshness and performance.
+- For more details go through /DOCS/**AVAILABLE DOCS**
