@@ -5,7 +5,7 @@ import prettierPlugin from 'eslint-plugin-prettier';
 export default [
   {
     // Apply to these files
-    files: ['tests/**/*.ts','src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js', 'src/**/*.jsx'],
+    files: ['tests/**/*.ts', 'src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js', 'src/**/*.jsx'],
 
     // Ignore these folders
     ignores: ['node_modules', 'dist'],

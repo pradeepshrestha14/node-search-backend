@@ -21,6 +21,6 @@ export const getProducts = async ({ query, page, limit }: SearchParams) => {
     total: filtered.length,
     page,
     limit,
-    data: paginated,
+    products: paginated,
   };
 };

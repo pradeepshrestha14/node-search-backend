@@ -8,7 +8,7 @@ import compression from "compression";
 import searchRoutes from "./routes/search";
 import { errorHandler } from "./middleware/errorHandler";
 
-dotenv.config({ debug: false }); // disable the verbose tips
+dotenv.config();
 
 const app = express();
 
@@ -21,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Logging
 app.use(morgan("combined"));
+
+// Serve a dummy favicon to prevent errors
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 // Routes
 app.use("/api/search", searchRoutes);
