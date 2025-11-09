@@ -2,6 +2,12 @@
 
 A scalable Node.js backend for search functionality with caching, validation, and API documentation.
 
+Play with this backend service at:  
+Deployed In RENDER CLOUD => URL: https://prod-node-search-backend.onrender.com/health
+
+- Swagger: https://prod-node-search-backend.onrender.com/api/docs
+- Fetch data : GET Method: https://prod-node-search-backend.onrender.com/api/search
+
 ## Features
 
 - REST API: `/api/search?q="apple"&page=1&limit=10` — supports `query`, `page`, and `limit` parameters
@@ -24,7 +30,7 @@ A scalable Node.js backend for search functionality with caching, validation, an
 - `src/validators/` → Request validators
 - `tests/` → Unit tests
 
-## Quickstart
+## Quickstart/ Setup
 
 1. Clone the repository and enter its directory:
 
