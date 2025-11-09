@@ -6,7 +6,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --watch src --ext ts --exec 'ts-node src/index.ts'",
-    "test": "jest --runInBand",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "coverage:open": "node -e \"const fs = require('fs'); const path = 'coverage/lcov-report/index.html'; if(fs.existsSync(path)) { const open = require('child_process').exec; open(process.platform === 'win32' ? 'start ' + path : process.platform === 'darwin' ? 'open ' + path : 'xdg-open ' + path); } else { console.log('Coverage report not found! Run npm run test:coverage first.'); }\"",
     "test:watch": "jest --watchAll",
     "prestart:build": "npm run build",
     "lint": "eslint",
@@ -25,7 +27,9 @@
     "express-validator": "^7.3.0",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
-    "node-cache": "^5.1.2"
+    "node-cache": "^5.1.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -36,6 +40,8 @@
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.10.0",
     "@types/supertest": "^6.0.3",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
     "eslint": "^9.39.1",

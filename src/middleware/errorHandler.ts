@@ -1,7 +1,12 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { AppError } from "../utils/AppError";
 
-export const errorHandler = (err: Error | AppError, req: Request, res: Response) => {
+export const errorHandler = (
+  err: Error | AppError,
+  req: Request,
+  res: Response,
+  _next: NextFunction, // <- this is mandatory for Express to detect it
+) => {
   console.error("❌ Error caught:", err);
 
   const statusCode = (err as AppError).statusCode || 500;

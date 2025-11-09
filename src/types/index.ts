@@ -8,3 +8,9 @@ export interface Product {
   thumbnail?: string;
   brand?: string;
 }
+
+export interface SearchParams {
+  query?: string;
+  page: number;
+  limit: number;
+}

@@ -15,8 +15,8 @@ describe("GET /api/search", () => {
     expect(res.body).toHaveProperty("total");
     expect(res.body).toHaveProperty("page");
     expect(res.body).toHaveProperty("limit");
-    expect(res.body).toHaveProperty("data");
-    expect(Array.isArray(res.body.data)).toBe(true);
+    expect(res.body).toHaveProperty("products");
+    expect(Array.isArray(res.body.products)).toBe(true);
   });
 
   test("returns all products when q is missing", async () => {
@@ -26,7 +26,7 @@ describe("GET /api/search", () => {
     expect(res.body.page).toBe(1);
     expect(res.body.limit).toBe(10); // default limit
     expect(res.body.total).toBeGreaterThan(0);
-    expect(Array.isArray(res.body.data)).toBe(true);
+    expect(Array.isArray(res.body.products)).toBe(true);
   });
 
   // --- Validation errors ---
@@ -57,14 +57,14 @@ describe("GET /api/search", () => {
     expect(res.status).toBe(200);
     expect(res.body.page).toBe(1);
     expect(res.body.limit).toBe(2);
-    expect(res.body.data.length).toBeLessThanOrEqual(2);
+    expect(res.body.products.length).toBeLessThanOrEqual(2);
   });
 
   test("returns empty array if no products match query", async () => {
     const res = await request(app).get("/api/search").query({ q: "nonexistent" });
     expect(res.status).toBe(200);
     expect(res.body.total).toBe(0);
-    expect(res.body.data).toEqual([]);
+    expect(res.body.products).toEqual([]);
   });
 
   //Test Driven Development: this feature will be done later in future

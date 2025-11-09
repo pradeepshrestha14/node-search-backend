@@ -1,10 +1,5 @@
+import { SearchParams } from "../types";
 import { getAllProducts, findProductsByQuery } from "../repositories/productRepository";
-
-interface SearchParams {
-  query?: string;
-  page: number;
-  limit: number;
-}
 
 export const getProducts = async ({ query, page, limit }: SearchParams) => {
   const allProducts = await getAllProducts();
