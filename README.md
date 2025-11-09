@@ -1,127 +1,111 @@
-Node Search Backend
+# Node Search Backend
 
 A scalable Node.js backend for search functionality with caching, validation, and API documentation.
 
-Features
+## Features
 
-REST API: /api/search?q="apple"&page=1&limit=10 with query, page, and limit parameters
+- REST API: `/api/search?q="apple"&page=1&limit=10` — supports `query`, `page`, and `limit` parameters
+- Request validation to ensure correct input
+- Caching using `node-cache` for improved performance
+- Centralized error handling
+- Swagger API documentation available at `/api/docs`
+- Unit tests and code coverage
 
-Request validation to ensure correct input
+## Folder structure
 
-Caching using node-cache for performance
+- `src/cache/` → Caching utilities
+- `src/config/` → Configuration files (Swagger, dotenv, etc.)
+- `src/controllers/` → API controllers
+- `src/middleware/` → Middleware (error handling, validation)
+- `src/repositories/` → Database / data access layer
+- `src/routes/` → Express routes
+- `src/services/` → Business logic
+- `src/utils/` → Helper functions (e.g. `AppError`)
+- `src/validators/` → Request validators
+- `tests/` → Unit tests
 
-Centralized error handling
+## Quickstart
 
-Swagger API documentation available at /api/docs
+1. Clone the repository and enter its directory:
 
-Folder Structure
+   ```bash
+   git clone <repo-url>
+   cd <repo-directory>
+   ```
 
-src/cache/ → Caching utilities
+2. Install dependencies:
 
-src/config/ → Configuration files (Swagger, dotenv, etc.)
+   ```bash
+   npm install
+   ```
 
-src/controllers/ → API controllers
+3. Create a `.env` file at the project root and set required variables:
 
-src/middleware/ → Middleware (error handling, validation)
+   ```env
+   PORT=3000
+   CACHE_TTL_SECONDS=60
+   API_SERVER_URL=http://localhost:3000
+   NODE_ENV=development
+   ```
 
-src/repositories/ → Database/data access layer
+4. Start the development server:
 
-src/routes/ → Express routes
+   ```bash
+   npm run dev
+   ```
 
-src/services/ → Business logic
+5. Visit the API:
+   - Swagger UI / API docs: `http://localhost:3000/api/docs`
+   - Health check: `http://localhost:3000/health`
+   - Search endpoint: `http://localhost:3000/api/search?q="apple"&page=1&limit=10`
 
-src/utils/ → Helper functions (AppError)
+## API Usage
 
-src/validators/ → Request validators
+- Endpoint: `GET /api/search`
+- Query parameters:
+  - `q` (string) — search term (required)
+  - `page` (number) — page number (default: `1`)
+  - `limit` (number) — items per page (default: `10`)
+- Example:
+  ```
+  GET /api/search?q=apple&page=2&limit=10
+  ```
 
-tests/ → Unit tests
+## Tests & Coverage
 
-Setup
+- Run tests and generate coverage:
+  ```bash
+  npm run test:coverage
+  npm run coverage:open
+  ```
+  The second command opens a browser with the detailed coverage report.
 
-1. Clone the repository
+## Docker (development)
 
-Clone this repository to your local machine and navigate into it.
+1. Build containers:
 
-2. Install dependencies
+   ```bash
+   docker compose build
+   ```
 
-Run the package manager to install all required dependencies.
+2. Start services:
+   ```bash
+   docker compose up
+   ```
 
-3. Create .env file
+Logs will show the server URL. Access the same endpoints above on the configured port.
 
-Set the following environment variables:
+## Deployment (Render)
 
-PORT=3000
+- Push changes to the `main` branch — Render will pick up the repo and deploy automatically.
+- For manual setup on Render:
+  1. Create a new service
+  2. Provide environment variables (or upload `.env`)
+  3. Connect your GitHub repo and deploy
 
-CACHE_TTL_SECONDS=60
+## Notes
 
-API_SERVER_URL=http://localhost:3000 → This is the backend service URL to be used by your frontend
-
-NODE_ENV=development
-
-4. Start development server
-
-Run the development server using:
-
-npm run dev
-
-5. Run tests and view coverage
-
-Check the unit tests and code coverage using:
-
-npm run test:coverage
-npm run coverage:open
-
-This will open a browser showing a detailed coverage report.
-
-6. Access Swagger documentation
-
-Swagger UI is available at:
-
-http://localhost:3000/api/docs
-
-You can interactively test all API endpoints here.
-
-Docker Development
-
-To run the backend in Docker:
-
-Build the containers:
-
-docker compose build
-
-Start the services:
-
-docker compose up
-
-Once started, the logs will show the server URL. You can access the APIs:
-
-Health check: http://localhost:3000/health
-
-Search: http://localhost:3000/api/search
-
-Search with query: http://localhost:3000/api/search?q="apple"&page=1&limit=10
-
-Deployment
-Using Render
-
-Push your changes to the main branch
-
-Render automatically deploys the service
-
-Self-hosted Deployment
-
-Create a Render account and new service
-
-Provide the .env file according to your environment or adapt from .env.example
-
-Connect your GitHub repository containing this project
-
-Render builds and starts your Node.js backend
-
-Notes
-
-Make sure environment variables are set correctly for caching, port, and API URL
-
-Swagger /api/docs provides an interactive API testing interface
-
-Pagination parameters (page, limit) default to 1 and 10 if not provided
+- Ensure environment variables are set correctly (port, caching TTL, API URL).
+- Swagger at `/api/docs` provides an interactive testing UI.
+- Pagination defaults to `page=1` and `limit=10` when not provided.
+- Caching TTL is controlled by `CACHE_TTL_SECONDS` to balance freshness and performance.
